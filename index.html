@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>जमीन और मकान से संबंधित वित्तीय विवरण</h1>
+    </header>
+    <main>
+      <section class="financial-image">
+    <h2>वित्तीय विवरण</h2>
+    <div class="image-gallery">
+        <div class="gallery-item" data-index="0">
+            <img src="imges/detailed.jpg" alt="Financial Details Image">
+            <div class="overlay">वित्तीय विवरण</div>
+        </div>
+        <div class="gallery-item" data-index="1">
+            <img src="imges/bankStatement.jpg" alt="Bank Statement 1">
+            <div class="overlay">बैंक स्टेटमेंट</div>
+        </div>
+        <div class="gallery-item" data-index="2">
+            <img src="imges/FrontBank.jpg" alt="Bank Statement 2">
+            <!-- <div class="overlay">बैंक स्टेटमेंट 2</div> -->
+        </div>
+    </div>
+</section>
+        <!-- Lightbox Modal -->
+        
+        <!-- Rest of the page (table section) remains the same -->
+        <section class="financial-details">
+            <h2>वित्तीय बिंदु</h2>
+            <div class="table-container">
+                <table id="financial-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="number">क्र.सं.</th>
+                            <th data-sort="string">विवरण</th>
+                            <th data-sort="number">राशि (रुपये में)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-tooltip="जमीन की बिक्री का मुख्य लेनदेन">
+                            <td>1</td>
+                            <td>जमीन के रुपये में से चार की जामिन कमल भाया और बा ने बेची</td>
+                            <td>1,04,50,000</td>
+                        </tr>
+                        <tr data-tooltip="शेष राशि की गणना">
+                            <td>2</td>
+                            <td>29 लाख में से 22 लाख बचते</td>
+                            <td>7,00,000</td>
+                        </tr>
+                        <tr data-tooltip="8 साल का ब्याज">
+                            <td>3</td>
+                            <td>घर की जामिन में से 10 लाख राजु काकाजी के यहाँ से 8 साल तक 20 हजार रुपये महीने ब्याज आया</td>
+                            <td>19,20,000</td>
+                        </tr>
+                        <tr data-tooltip="नेवरी फाटक की आय">
+                            <td>4</td>
+                            <td>नेवरी फाटक की जामिन रसीदी बीछी आये</td>
+                            <td>1,50,000</td>
+                        </tr>
+                        <tr data-tooltip="मकान बिक्री की आय">
+                            <td>5</td>
+                            <td>राजाराम नगर मकान रसीदी बेचा कमाये</td>
+                            <td>2,40,000</td>
+                        </tr>
+                       
+                        <tr data-tooltip="10 साल की बचत">
+                            <td>7</td>
+                            <td>भौरासा जमीन की तोजी 60 हजार रुपये साल से 10 साल के 6 लाख में से 3 लाख बचे</td>
+                            <td>3,00,000</td>
+                        </tr>
+                        <tr data-tooltip="पंचायत निकासी">
+                            <td>8</td>
+                            <td>बा के 650000 पंचायत में निकाले खा गया</td>
+                            <td>6,50,000</td>
+                        </tr>
+                        <tr data-tooltip="ब्याज की राशि">
+                            <td>9</td>
+                            <td>बा के 650000 का ब्याज 650000 रुपये भी खा गया</td>
+                            <td>6,50,000</td>
+                        </tr>
+                        <tr data-tooltip="आलम नगर की खरीद">
+                            <td>10</td>
+                            <td>जामिन के पर से बा ने आलम नगर के तीन प्लाट कमल भाया को दिलाये</td>
+                            <td>15,00,000</td>
+                        </tr>
+                        <tr data-tooltip="प्लाट की व्यवस्था">
+                            <td>11</td>
+                            <td></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"><strong>कुल राशि</strong></td>
+                            <td><strong>61,10,000</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="additional-notes">
+                <p><strong>अतिरिक्त नोट:</strong></p>
+                <p>61,100000 रुपये में से 15 लाख के प्लाट लेने के बाद जो रुपये बचे सब रुपये मेडकी रोड के मकान और दुकान में लगा दिये!</p>
+                <p>और अभी 6300000 रुपये में भोरासा की जामिन बेची उसमें से 3000000 रुपये बचे और 3000000 रुपये इन्डियन ओवरसीज बैंक में रखे हैं जब सभी भाई हिसाब करके रुपये बाटने की बोलते हैं तो हिसाब नहीं करता हैं और सबको धमकी देता हैं!</p>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

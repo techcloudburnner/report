@@ -1,0 +1,539 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.financial-image, .financial-details {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.financial-image h2, .financial-details h2 {
+    color: #1e3c72;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #2a5298;
+    padding-bottom: 0.5rem;
+}
+
+/* Image Gallery Styling */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 300px); /* Fixed width for each image to ensure single row */
+    grid-template-rows: auto; /* Single row */
+    gap: 1.5rem;
+    padding: 1rem 0;
+    overflow-x: auto; /* Horizontal scrolling on smaller screens */
+    scroll-snap-type: x mandatory; /* Snap to each image when scrolling */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #2a5298 #e0e0e0; /* For Firefox */
+}
+
+.image-gallery::-webkit-scrollbar {
+    height: 8px; /* For Chrome, Safari, Edge */
+}
+
+.image-gallery::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+.image-gallery::-webkit-scrollbar-thumb {
+    background: #2a5298;
+    border-radius: 4px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    scroll-snap-align: start; /* Align images when scrolling */
+    min-width: 300px; /* Ensure consistent width */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-gallery {
+        grid-template-columns: repeat(3, 250px); /* Smaller width for tablets */
+        gap: 1rem;
+    }
+
+    .gallery-item {
+        min-width: 250px;
+    }
+
+    .gallery-item img {
+        height: 150px;
+    }
+
+    .overlay {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-gallery {
+        grid-template-columns: repeat(3, 200px); /* Even smaller width for mobile */
+        gap: 0.75rem;
+    }
+
+    .gallery-item {
+        min-width: 200px;
+    }
+
+    .gallery-item img {
+        height: 120px;
+    }
+
+    .overlay {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+}
+/* Image Gallery Styling */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Lightbox Styling */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#lightbox-caption {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+/* Table Styling (unchanged from previous) */
+.table-container {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+table th {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+table th:hover {
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    transform: scale(1.02);
+}
+
+table td {
+    font-size: 1rem;
+    color: #333;
+    position: relative;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+table tbody tr:hover {
+    background-color: #e9ecef;
+    transform: scale(1.01);
+}
+
+table tbody tr.active {
+    background-color: #d1e7dd;
+    box-shadow: inset 0 0 0 2px #2a5298;
+}
+
+table tfoot {
+    background-color: #2a5298;
+    color: white;
+    font-weight: 700;
+}
+
+table tfoot td {
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+table td:first-child, table th:first-child {
+    text-align: center;
+    width: 60px;
+}
+
+table td:last-child, table th:last-child {
+    text-align: right;
+}
+
+table tbody tr td::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2a5298;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, top 0.3s ease;
+}
+
+table tbody tr:hover td::after {
+    opacity: 1;
+    top: -40px;
+}
+
+.additional-notes {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.additional-notes p {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.additional-notes p strong {
+    color: #1e3c72;
+}
+
+footer {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .financial-image h2, .financial-details h2 {
+        font-size: 1.5rem;
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .gallery-item img {
+        height: 150px;
+    }
+
+    .overlay {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    table th, table td {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+
+    table td:first-child, table th:first-child {
+        width: 40px;
+    }
+
+    table tbody tr td::after {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    #lightbox-img {
+        max-height: 60vh;
+    }
+
+    #lightbox-caption {
+        font-size: 1rem;
+    }
+
+    .nav-btn {
+        font-size: 1.5rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .close-btn {
+        font-size: 2rem;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .gallery-item img {
+        height: 120px;
+    }
+
+    .overlay {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    table th, table td {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    table td:first-child, table th:first-child {
+        width: 30px;
+    }
+
+    table tbody tr td::after {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+    }
+
+    #lightbox-img {
+        max-height: 50vh;
+    }
+
+    #lightbox-caption {
+        font-size: 0.9rem;
+    }
+
+    .nav-btn {
+        font-size: 1.2rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
